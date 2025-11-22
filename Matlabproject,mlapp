@@ -1,0 +1,275 @@
+classdef Matlabproject < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure                    matlab.ui.Figure
+        CountryGDPGrowthcomparisonsLabel  matlab.ui.control.Label
+        ZimbabwesGDPpercentagegrowthButton  matlab.ui.control.Button
+        SouthAfricavsEswatiniGDPGrowthButton  matlab.ui.control.Button
+        BotswanavsLesothoGDPGrowthButton  matlab.ui.control.Button
+        MalawisGDPGrowthButton      matlab.ui.control.Button
+        WorstGDPGrowthButton        matlab.ui.control.Button
+        BestoverallGDPGrowthButton  matlab.ui.control.Button
+        MadagascarvsZambiaGDPGrowthButton  matlab.ui.control.Button
+        UIAxes                      matlab.ui.control.UIAxes
+    end
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Button pushed function: MadagascarvsZambiaGDPGrowthButton
+        function MadagascarvsZambiaGDPGrowthButtonPushed(app, event)
+            cla(app.UIAxes);
+            reset(app.UIAxes);
+           
+            data = readtable("Excel spreadsheet.xls");
+            % Plot showing Madagascar's and Zambia's GDP Growth over the last 20 year
+            plot(app.UIAxes, data.Year, data.Madagascar,'g', data.Year, data.Zambia,'yx');
+            
+            xlabel(app.UIAxes, 'Year');
+            ylabel(app.UIAxes, 'GDP');
+            legend(app.UIAxes, 'Madagascar','Zambia')
+
+            title(app.UIAxes, 'GDP Growth for the last 20 years');
+            % Colour of background
+            app.UIAxes.Color = '#262626';
+            % Colour of labels and title
+            app.UIAxes.XColor = 'white';
+            app.UIAxes.YColor = 'white';
+            app.UIAxes.Title.Color = 'White';
+
+
+
+        end
+
+        % Button pushed function: BestoverallGDPGrowthButton
+        function BestoverallGDPGrowthButtonPushed(app, event)
+            cla(app.UIAxes);
+            reset(app.UIAxes);
+            data = readtable("Excel spreadsheet.xls");
+            % Scatter Plot showing Namibia as having the best GDP growth over the last 20 year
+            scatter(app.UIAxes,data.Year,data.Namibia,"yellow");
+
+            xlabel(app.UIAxes, 'Year');
+            ylabel(app.UIAxes, 'GDP');
+            title(app.UIAxes, 'GDP Growth for the last 20 years');
+            % Colour of background
+            app.UIAxes.Color = '#262626';
+            % Colour of labels and title
+            app.UIAxes.XColor = 'white';
+            app.UIAxes.YColor = 'white';
+            app.UIAxes.Title.Color = 'White';   
+        end
+
+        % Button pushed function: WorstGDPGrowthButton
+        function WorstGDPGrowthButtonPushed(app, event)
+            cla(app.UIAxes);
+            reset(app.UIAxes);
+            data = readtable("Excel spreadsheet.xls");
+            % Scatter Plot showing Worst GDP Growth over the last 20 year
+            bar(app.UIAxes,data.Year,data.Zimbabwe,"stacked","yellow");
+            xlabel(app.UIAxes, 'Year');
+            ylabel(app.UIAxes, 'GDP');
+         
+            title(app.UIAxes, 'GDP Growth for the last 20 years');
+            % Colour of background
+            app.UIAxes.Color = '#262626';
+            % Colour of labels and title
+            app.UIAxes.XColor = 'white';
+            app.UIAxes.YColor = 'white';
+            app.UIAxes.Title.Color = 'White';
+
+            
+        end
+
+        % Button pushed function: MalawisGDPGrowthButton
+        function MalawisGDPGrowthButtonPushed(app, event)
+            cla(app.UIAxes);
+            reset(app.UIAxes);
+            data = readtable("Excel spreadsheet.xls");
+            %Stem chart showing Malawis GDP Growth over the last 20 years 
+            stem(app.UIAxes,data.Year,data.Malawi,"filled");
+            xlabel(app.UIAxes, 'Year');
+            ylabel(app.UIAxes, 'GDP');
+            title(app.UIAxes, 'GDP Growth for the last 20 years');
+            % Colour of background
+            app.UIAxes.Color = '#262626';
+            % Colour of labels and title
+            app.UIAxes.XColor = 'white';
+            app.UIAxes.YColor = 'white';
+            app.UIAxes.Title.Color = 'White';
+
+
+        end
+
+        % Callback function
+        function ButtonPushed(app, event)
+
+           
+        end
+
+        % Button pushed function: BotswanavsLesothoGDPGrowthButton
+        function BotswanavsLesothoGDPGrowthButtonPushed(app, event)
+            cla(app.UIAxes);
+            reset(app.UIAxes);
+            data = readtable("Excel spreadsheet.xls");
+            % Plot showing Botswana's and Lesotho's  GDP Growth over the last 20 year
+            plot(app.UIAxes, data.Year, data.Botswana,'g', data.Year, data.Lesotho,'yx');
+            
+            xlabel(app.UIAxes, 'Year');
+            ylabel(app.UIAxes, 'GDP');
+            legend(app.UIAxes, 'Botswana','Lesotho')
+
+            title(app.UIAxes, 'GDP Growth for the last 20 years');
+            % Colour of background
+            app.UIAxes.Color = '#262626';
+            % Colour of labels and title
+            app.UIAxes.XColor = 'white';
+            app.UIAxes.YColor = 'white';
+            app.UIAxes.Title.Color = 'White';
+        end
+
+        % Button pushed function: SouthAfricavsEswatiniGDPGrowthButton
+        function SouthAfricavsEswatiniGDPGrowthButtonPushed(app, event)
+            cla(app.UIAxes);
+            reset(app.UIAxes);
+            data = readtable("Excel spreadsheet.xls");
+            % Plot showing ESwatini and South Africa's Growth GDP over the last 20 year
+            plot(app.UIAxes, data.Year, data.SouthAfrica,'g', data.Year, data.Eswatini,'yx');
+            
+            xlabel(app.UIAxes, 'Year');
+            ylabel(app.UIAxes, 'GDP');
+            legend(app.UIAxes, 'South Africa','Eswatini')
+
+            title(app.UIAxes, 'GDP Growth for the last 20 years');
+            % Colour of background
+            app.UIAxes.Color = '#262626';
+            % Colour of labels and title
+            app.UIAxes.XColor = 'white';
+            app.UIAxes.YColor = 'white';
+            app.UIAxes.Title.Color = 'White';
+        end
+
+        % Button pushed function: ZimbabwesGDPpercentagegrowthButton
+        function ZimbabwesGDPpercentagegrowthButtonPushed(app, event)
+            cla(app.UIAxes);
+            reset(app.UIAxes);
+            data = readtable("Excel spreadsheet.xls");
+            % Plot showing Zimbabwe's GDP Growth over the last 20 year in percentage
+            % increase ignoring all negative values
+            pie(app.UIAxes,data.Zimbabwe)
+
+            %Pie chart legend
+            legend(app.UIAxes,'2010','2021','2018','2017','2016','2014','2015','2013','2012','2011','2010','2009')
+            
+            title(app.UIAxes, 'GDP Growth for the last 20 years in percentage increase');
+
+            
+        end
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure and hide until all components are created
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Color = [0.4667 0.6745 0.1882];
+            app.UIFigure.Position = [100.333333333333 100.333333333333 640 480];
+            app.UIFigure.Name = 'MATLAB App';
+
+            % Create UIAxes
+            app.UIAxes = uiaxes(app.UIFigure);
+            title(app.UIAxes, 'Southern African GDP Growth')
+            xlabel(app.UIAxes, 'Year')
+            ylabel(app.UIAxes, 'GDP')
+            zlabel(app.UIAxes, 'Country')
+            app.UIAxes.FontName = 'Verdana';
+            app.UIAxes.Position = [40 226 560 246];
+
+            % Create MadagascarvsZambiaGDPGrowthButton
+            app.MadagascarvsZambiaGDPGrowthButton = uibutton(app.UIFigure, 'push');
+            app.MadagascarvsZambiaGDPGrowthButton.ButtonPushedFcn = createCallbackFcn(app, @MadagascarvsZambiaGDPGrowthButtonPushed, true);
+            app.MadagascarvsZambiaGDPGrowthButton.WordWrap = 'on';
+            app.MadagascarvsZambiaGDPGrowthButton.FontName = 'Verdana';
+            app.MadagascarvsZambiaGDPGrowthButton.Position = [74 145 223 22];
+            app.MadagascarvsZambiaGDPGrowthButton.Text = 'Madagascar vs Zambia GDP Growth';
+
+            % Create BestoverallGDPGrowthButton
+            app.BestoverallGDPGrowthButton = uibutton(app.UIFigure, 'push');
+            app.BestoverallGDPGrowthButton.ButtonPushedFcn = createCallbackFcn(app, @BestoverallGDPGrowthButtonPushed, true);
+            app.BestoverallGDPGrowthButton.FontName = 'Verdana';
+            app.BestoverallGDPGrowthButton.Position = [418 193 201 22];
+            app.BestoverallGDPGrowthButton.Text = 'Best overall GDP Growth';
+
+            % Create WorstGDPGrowthButton
+            app.WorstGDPGrowthButton = uibutton(app.UIFigure, 'push');
+            app.WorstGDPGrowthButton.ButtonPushedFcn = createCallbackFcn(app, @WorstGDPGrowthButtonPushed, true);
+            app.WorstGDPGrowthButton.FontName = 'Verdana';
+            app.WorstGDPGrowthButton.Position = [418 145 201 22];
+            app.WorstGDPGrowthButton.Text = 'Worst GDP Growth';
+
+            % Create MalawisGDPGrowthButton
+            app.MalawisGDPGrowthButton = uibutton(app.UIFigure, 'push');
+            app.MalawisGDPGrowthButton.ButtonPushedFcn = createCallbackFcn(app, @MalawisGDPGrowthButtonPushed, true);
+            app.MalawisGDPGrowthButton.Position = [418 105 201 22];
+            app.MalawisGDPGrowthButton.Text = 'Malawi''s GDP Growth';
+
+            % Create BotswanavsLesothoGDPGrowthButton
+            app.BotswanavsLesothoGDPGrowthButton = uibutton(app.UIFigure, 'push');
+            app.BotswanavsLesothoGDPGrowthButton.ButtonPushedFcn = createCallbackFcn(app, @BotswanavsLesothoGDPGrowthButtonPushed, true);
+            app.BotswanavsLesothoGDPGrowthButton.Position = [74 105 223 22];
+            app.BotswanavsLesothoGDPGrowthButton.Text = 'Botswana vs Lesotho GDP Growth';
+
+            % Create SouthAfricavsEswatiniGDPGrowthButton
+            app.SouthAfricavsEswatiniGDPGrowthButton = uibutton(app.UIFigure, 'push');
+            app.SouthAfricavsEswatiniGDPGrowthButton.ButtonPushedFcn = createCallbackFcn(app, @SouthAfricavsEswatiniGDPGrowthButtonPushed, true);
+            app.SouthAfricavsEswatiniGDPGrowthButton.Position = [74 54 223 22];
+            app.SouthAfricavsEswatiniGDPGrowthButton.Text = 'SouthAfrica vs Eswatini GDP Growth';
+
+            % Create ZimbabwesGDPpercentagegrowthButton
+            app.ZimbabwesGDPpercentagegrowthButton = uibutton(app.UIFigure, 'push');
+            app.ZimbabwesGDPpercentagegrowthButton.ButtonPushedFcn = createCallbackFcn(app, @ZimbabwesGDPpercentagegrowthButtonPushed, true);
+            app.ZimbabwesGDPpercentagegrowthButton.Position = [413 54 211 22];
+            app.ZimbabwesGDPpercentagegrowthButton.Text = 'Zimbabwe''s GDP percentage growth';
+
+            % Create CountryGDPGrowthcomparisonsLabel
+            app.CountryGDPGrowthcomparisonsLabel = uilabel(app.UIFigure);
+            app.CountryGDPGrowthcomparisonsLabel.HorizontalAlignment = 'center';
+            app.CountryGDPGrowthcomparisonsLabel.FontSize = 14;
+            app.CountryGDPGrowthcomparisonsLabel.FontWeight = 'bold';
+            app.CountryGDPGrowthcomparisonsLabel.Position = [65 193 242 22];
+            app.CountryGDPGrowthcomparisonsLabel.Text = 'Country GDP Growth comparisons ';
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = Matlabproject
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
